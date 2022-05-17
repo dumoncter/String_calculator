@@ -60,7 +60,20 @@ public class Main {
 
 
         if (firstValue == -1 && secondValue > -1 || secondValue == -1 && firstValue > -1) {
-            throw new Exception("Используются одновременно разные системы счисления");
+            throw new Exception("Используются одновременно разные системы счисления (введите только арабские или только римские цифры) или введено римское число больше X");
+        }
+
+        if (firstValue < 0 && secondValue < 0) {
+            result = 0;
+
+        } else {
+            result = Calculator.calculations(firstValue, secondValue, operation);
+            if (result < 0 || result == 0) {
+                throw new Exception("В римской системе нет отрицательных чисел");
+            }
+            String resultRoman = RomanNumb.ArabToRoman(result);
+            System.out.println(resultRoman);
+            return;
         }
 
         try {
@@ -70,8 +83,7 @@ public class Main {
             throw new Exception("Неверный формат строки. Введи римскую или арабскую цифру от 1 до 10");
         }
         if ((firstValue < 1) || (firstValue > 10) || (secondValue < 1) || (secondValue > 10)) {
-            throw new Exception("Введено число вне диапазона значения. Допускается ввод цифр от 1 до 10");
-
+            throw new Exception("Число вне диапазона. Допускается ввод цифр от 1 до 10");
         } else {
             result = Calculator.calculations(firstValue, secondValue, operation);
             System.out.println(result);

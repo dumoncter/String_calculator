@@ -14,8 +14,12 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         // while (true) {
-        System.out.println("✔ Привет! Я умный калькулятор!\n👍 Введите ваше выражение: ");
-        String input = scanner.nextLine();
+        System.out.println("✔ Привет! Я умный калькулятор!\n👍 Для выхода нажмите: e (rus-eng)\n😜 Введите ваше выражение: ");
+        String input = scanner.nextLine().replaceAll("\\s+", "");
+        if (input.equals("е") || input.equals("e")) {
+            System.out.println("Завершение программы.");
+            System.exit(0);
+        }
 
         char[] charArray = new char[10];
         for (int i = 0; i < input.length(); i++) {
